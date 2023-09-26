@@ -1,7 +1,7 @@
 function Ecommerce() {
     return (
         <div>
-            
+            Ecommerce
         </div>
     )
 }

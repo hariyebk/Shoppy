@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react"
+import { createContext, useContext, useState } from "react"
 
 const stateContext = createContext()
 // Global states
@@ -8,28 +8,25 @@ const initialState = {
     userProfile: false,
     notification: false
 }
-const reducer = (state, action) => {
-    switch(action.type){
-        case"test1":
-        return{
-
-        }
-        default:
-            throw new Error("unkown")
-    }
-}
 
 function ContextProvider({children}) {
-    const [{cart, chat, notification, userProfile}, dispatch] = useReducer(reducer, initialState)
     const [activeMenu, setActiveMenu] = useState(true)
+    const [isClicked,  setIsClicked] = useState(initialState)
+    const [screenSize, setScreenSize] = useState(undefined)
+    // Event Hnadler
+    const handleClick = clicked => {
+        setIsClicked({...initialState, [clicked]: isClicked[clicked] ? false : true})
+    }
+
     return (
         <stateContext.Provider value={{
             activeMenu,
             setActiveMenu,
-            chat,
-            cart,
-            notification,
-            userProfile, 
+            isClicked,
+            setIsClicked,
+            handleClick,
+            screenSize,
+            setScreenSize
         }}>
             {children}
         </stateContext.Provider>

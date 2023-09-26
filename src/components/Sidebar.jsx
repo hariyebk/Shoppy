@@ -4,10 +4,17 @@ import {MdOutlineCancel} from "react-icons/md"
 import {TooltipComponent} from "@syncfusion/ej2-react-popups"
 import {links} from "../data/data/dummy"
 import { UseContext } from "../contexts/ContextProvider"
+import { useEffect } from "react"
 
 function Sidebar() {
-    const {activeMenu, setActiveMenu} = UseContext()
-    const active = "flex items-center gap-5 pl-4 pb-2.5 rounded-lg font-bold text-md m-2"
+    const {activeMenu, setActiveMenu, screenSize} = UseContext()
+    function handleCloseSidebar(){
+        // close the sidebar in small screens when the close button is clicked.
+        if(activeMenu && screenSize <= 900){
+            setActiveMenu(false)
+        }
+    }
+    const active = "flex items-center gap-5 pl-4 pb-2.5 rounded-lg text-md m-2"
     const inactive = "flex items-center gap-5 pl-4 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2"
 
     return (
@@ -24,7 +31,7 @@ function Sidebar() {
 
                     {/* Close Menu button */}
                     <TooltipComponent content="Menu" position="BottomCenter">
-                        <button type = "button" onClick={() => setActiveMenu(false)} className="text-xl rounded-fullitems-center mr-4 p-3 mt-4 block">
+                        <button type = "button" onClick={handleCloseSidebar} className="text-xl rounded-fullitems-center mr-4 p-3 mt-4 block md:hidden">
                             <MdOutlineCancel />
                         </button>
                     </TooltipComponent>
@@ -44,7 +51,7 @@ function Sidebar() {
                                     <NavLink
                                     to={`/${link.name}`}
                                     key={link.name}
-                                    onClick={() => {}}
+                                    onClick={handleCloseSidebar}
                                     className={({isActive}) => isActive ? active : inactive}
                                     >
                                         {link.icon}

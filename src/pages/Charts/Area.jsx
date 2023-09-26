@@ -1,7 +1,7 @@
 function Area() {
     return (
         <div>
-            
+            Area
         </div>
     )
 }
