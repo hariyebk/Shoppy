@@ -41,7 +41,6 @@ function App() {
                         <div className="fixed md:static dark:bg-main-dark-bg bg-main-bg navbar w-full">
                             <NavBar />
                         </div>
-                    </div>
                         <div>
                             <Routes>
                                 {/* Dashboard */}
@@ -67,6 +66,7 @@ function App() {
                                 <Route path="/stacked" element = {<Stacked/>}/>
                             </Routes>
                         </div>
+                    </div>
                 </div>
             </BrowserRouter>
         </div>
