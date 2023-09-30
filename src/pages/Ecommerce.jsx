@@ -106,12 +106,12 @@ function Ecommerce() {
                                         </p>
                                     </blockquote>
                                 </div>
-                                <div className="mt-5 h-32 w-80">
+                                <div className="mt-5 h-60 w-80">
                                     <SparkLine
                                     currentColor = "blue"
                                     id = "line-sparkline"
                                     type = "Line"
-                                    height = "80px"
+                                    height = "50px"
                                     width = "250px"
                                     data = {SparklineAreaData}
                                     color = "blue"
@@ -124,8 +124,13 @@ function Ecommerce() {
                                     text="Download Report"
                                     borderRadius= "10px"
                                     />
-
                                 </div>
+                            </div>
+                            <div>
+                                <Stacked
+                                width = "320px"
+                                height = "360px"
+                                />
                             </div>
                         </div>
                     </div>
